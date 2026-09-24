@@ -1,7 +1,7 @@
 package com.kingmang.axl;
 
 import com.github.javaparser.JavaParser;
-import com.kingmang.axl.rules.SimpleRuleVisitor;
+import com.kingmang.axl.rules.ClassLineVisitor;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +12,8 @@ public class Main {
         var result = parser.parse(new File("Test.java"));
 
         result.getResult().ifPresent(compilationUnit -> {
-            SimpleRuleVisitor visitor = new SimpleRuleVisitor();
+            //SimpleRuleVisitor visitor = new SimpleRuleVisitor();
+            ClassLineVisitor visitor = new ClassLineVisitor();
             visitor.visit(compilationUnit);
         });
 
