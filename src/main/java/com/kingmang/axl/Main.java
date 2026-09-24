@@ -1,6 +1,8 @@
 package com.kingmang.axl;
 
 import com.github.javaparser.JavaParser;
+import com.kingmang.axl.display.Display;
+import com.kingmang.axl.problem.ProblemList;
 import com.kingmang.axl.rules.ClassLineVisitor;
 
 import java.io.File;
@@ -20,5 +22,7 @@ public class Main {
         result.getProblems().forEach(problem ->
                 System.err.println("parse error: " + problem.getMessage())
         );
+
+        Display.print();
     }
 }

@@ -1,12 +1,13 @@
 package com.kingmang.axl.display;
 
+import com.kingmang.axl.problem.Problem;
+import com.kingmang.axl.problem.ProblemList;
+
 //TODO: a simple sketch, then make it look good
 public class Display {
-    public static void warn(String message){
-        System.out.println("[WARN]: " + message);
-    }
-
-    public static void info(String message){
-        System.out.println("[INFO]: " + message);
+    public static void print(){
+        for(Problem p : ProblemList.getList()){
+            System.out.println(p);
+        }
     }
 }

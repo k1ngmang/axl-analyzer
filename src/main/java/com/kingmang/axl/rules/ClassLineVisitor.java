@@ -3,7 +3,7 @@ package com.kingmang.axl.rules;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
-import com.kingmang.axl.display.Display;
+import com.kingmang.axl.problem.ProblemList;
 
 public class ClassLineVisitor extends VoidVisitorAdapter<Void> implements RuleVisitor{
 
@@ -25,10 +25,11 @@ public class ClassLineVisitor extends VoidVisitorAdapter<Void> implements RuleVi
         int count = declaration.getEnd().map(e -> e.line).orElse(0)
                 - declaration.getBegin().map(b -> b.line).orElse(0) + 1;
         if(count > INFO_MAX_CLASS_LINES && count < WARN_MAX_CLASS_LINES) {
-            //TODO: add this to a list instead of outputting it immediately
-            Display.info("class " + declaration.getNameAsString() + " has more than " + INFO_MAX_CLASS_LINES + " lines");
+            ProblemList.addInfo("class " + declaration.getNameAsString() + " has more than " + INFO_MAX_CLASS_LINES + " lines");
+            //Display.info("class " + declaration.getNameAsString() + " has more than " + INFO_MAX_CLASS_LINES + " lines");
         } else if(count >= WARN_MAX_CLASS_LINES) {
-            Display.warn("class " + declaration.getNameAsString() + " has more than " + WARN_MAX_CLASS_LINES + " lines");
+            ProblemList.addWarn("class " + declaration.getNameAsString() + " has more than " + WARN_MAX_CLASS_LINES + " lines");
+            //Display.warn("class " + declaration.getNameAsString() + " has more than " + WARN_MAX_CLASS_LINES + " lines");
         }
         super.visit(declaration, arg);
     }
