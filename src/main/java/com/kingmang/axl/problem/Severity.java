@@ -1,7 +1,7 @@
 package com.kingmang.axl.problem;
 
-public enum ProblemType {
-    WARNING,
+public enum Severity {
     INFO,
+    WARNING,
     ERROR
 }
