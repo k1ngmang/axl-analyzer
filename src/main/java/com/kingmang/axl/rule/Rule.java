@@ -5,15 +5,9 @@ import com.kingmang.axl.problem.ProblemCollector;
 import com.kingmang.axl.problem.Severity;
 
 public interface Rule {
-    String getId();
-
     String getDescription();
 
     Severity getSeverity();
-
-    boolean isEnabled();
-
-    void setEnabled(boolean enabled);
 
     void analyze(AnalysisContext context, ProblemCollector collector);
 }

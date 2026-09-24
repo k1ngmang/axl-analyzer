@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -26,7 +27,7 @@ class AnalyzerTest {
         new Analyzer(runContext).analyze(source);
 
         var problem = runContext.getCollector().getProblems().getFirst();
-        assertEquals(ClassLineRule.ID, problem.getRuleId());
+        assertEquals(Constant.CLASS_LINE_RULE_ID, problem.getRuleId());
         assertEquals(Severity.WARNING, problem.getSeverity());
         assertEquals(source.toAbsolutePath().normalize().toString(), problem.getFileName());
         assertTrue(problem.getRange().isPresent());
@@ -37,8 +38,8 @@ class AnalyzerTest {
         Path source = temporaryDirectory.resolve("Large.java");
         Files.writeString(source, "class Large {\n\n\n}\n");
         ClassLineRule rule = new ClassLineRule(1, 3, 4, 5);
-        rule.setEnabled(false);
-        AnalysisRunContext runContext = new AnalysisRunContext(List.of(rule));
+        Config config = new Config(Map.of(Constant.CLASS_LINE_RULE_ID, false));
+        AnalysisRunContext runContext = new AnalysisRunContext(List.of(rule), config);
 
         new Analyzer(runContext).analyze(source);
 

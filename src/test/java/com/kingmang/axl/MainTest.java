@@ -41,4 +41,18 @@ class MainTest {
         assertEquals(1, exitCode);
         assertTrue(output.toString().contains("[ERROR] parser:"));
     }
+
+    @Test
+    void analyzesFilesRegardlessOfExtension() throws IOException {
+        Path source = temporaryDirectory.resolve("Example.txt");
+        Files.writeString(source, "class Example {}");
+
+        int exitCode = Main.run(
+                new String[]{source.toString()},
+                new PrintStream(new ByteArrayOutputStream()),
+                System.err
+        );
+
+        assertEquals(0, exitCode);
+    }
 }

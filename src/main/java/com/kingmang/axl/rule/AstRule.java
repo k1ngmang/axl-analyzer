@@ -5,25 +5,10 @@ import com.kingmang.axl.core.AnalysisContext;
 import com.kingmang.axl.problem.ProblemCollector;
 
 public abstract class AstRule extends VoidVisitorAdapter<AnalysisContext> implements Rule {
-    private boolean enabled = true;
     private ProblemCollector collector;
 
     @Override
-    public final boolean isEnabled() {
-        return enabled;
-    }
-
-    @Override
-    public final void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    @Override
     public final void analyze(AnalysisContext context, ProblemCollector collector) {
-        if (!enabled) {
-            return;
-        }
-
         this.collector = collector;
         try {
             context.getCompilationUnit().accept(this, context);

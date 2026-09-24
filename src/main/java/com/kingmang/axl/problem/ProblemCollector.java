@@ -1,6 +1,8 @@
 package com.kingmang.axl.problem;
 
 import com.github.javaparser.Range;
+import com.kingmang.axl.core.RuleIdResolver;
+import com.kingmang.axl.rule.Rule;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,6 +12,15 @@ import java.util.Optional;
 
 public final class ProblemCollector {
     private final List<Problem> problems = new ArrayList<>();
+    private final RuleIdResolver ruleIds;
+
+    public ProblemCollector() {
+        this(new RuleIdResolver());
+    }
+
+    public ProblemCollector(RuleIdResolver ruleIds) {
+        this.ruleIds = Objects.requireNonNull(ruleIds, "ruleIds");
+    }
 
     public void report(Problem problem) {
         problems.add(Objects.requireNonNull(problem, "problem"));
@@ -44,6 +55,24 @@ public final class ProblemCollector {
             Optional<Range> range
     ) {
         report(new Problem(ruleId, severity, message, source, ruleKind, range));
+    }
+
+    public void report(
+            Rule rule,
+            Severity severity,
+            String message,
+            String source,
+            Optional<Range> range
+    ) {
+        Objects.requireNonNull(rule, "rule");
+        report(
+                ruleIds.getId(rule.getClass()),
+                severity,
+                message,
+                source,
+                rule.getClass().getSimpleName(),
+                range
+        );
     }
 
     // returns an unmodifiable view which reflects later reports

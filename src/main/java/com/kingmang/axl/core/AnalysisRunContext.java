@@ -11,15 +11,30 @@ public final class AnalysisRunContext {
     private final JavaParser parser;
     private final List<Rule> rules;
     private final ProblemCollector collector;
+    private final Config config;
 
     public AnalysisRunContext(List<? extends Rule> rules) {
-        this(new JavaParser(), rules, new ProblemCollector());
+        this(rules, new Config());
+    }
+
+    public AnalysisRunContext(List<? extends Rule> rules, Config config) {
+        this(new JavaParser(), rules, new ProblemCollector(), config);
     }
 
     public AnalysisRunContext(JavaParser parser, List<? extends Rule> rules, ProblemCollector collector) {
+        this(parser, rules, collector, new Config());
+    }
+
+    public AnalysisRunContext(
+            JavaParser parser,
+            List<? extends Rule> rules,
+            ProblemCollector collector,
+            Config config
+    ) {
         this.parser = Objects.requireNonNull(parser, "parser");
         this.rules = List.copyOf(Objects.requireNonNull(rules, "rules"));
         this.collector = Objects.requireNonNull(collector, "collector");
+        this.config = Objects.requireNonNull(config, "config");
     }
 
     public JavaParser getParser() {
@@ -32,5 +47,9 @@ public final class AnalysisRunContext {
 
     public ProblemCollector getCollector() {
         return collector;
+    }
+
+    public Config getConfig() {
+        return config;
     }
 }

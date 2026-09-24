@@ -9,8 +9,6 @@ import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Severity;
 
 public final class ClassLineRule extends AstRule {
-    public static final String ID = "class-lines";
-
     private final int infoClassThreshold;
     private final int warningClassThreshold;
 
@@ -94,19 +92,13 @@ public final class ClassLineRule extends AstRule {
             String declarationKind
     ) {
         collector().report(
-                getId(),
+                this,
                 severity,
                 declarationKind + " " + declaration.getNameAsString()
                         + " has more than " + threshold + " lines",
                 context.getSourceFile().getPath().toString(),
-                getClass().getSimpleName(),
                 declaration.getRange()
         );
-    }
-
-    @Override
-    public String getId() {
-        return ID;
     }
 
     @Override

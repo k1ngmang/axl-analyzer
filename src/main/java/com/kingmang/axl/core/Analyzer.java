@@ -4,8 +4,6 @@ import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
 import com.kingmang.axl.problem.ProblemCollector;
 import com.kingmang.axl.problem.Severity;
-import com.kingmang.axl.rule.Rule;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,6 +13,7 @@ import java.util.Optional;
 public final class Analyzer {
 
     private final AnalysisRunContext runContext;
+    private final RuleIdResolver ruleIds = new RuleIdResolver();
 
     public Analyzer(AnalysisRunContext runContext) {
         this.runContext = Objects.requireNonNull(runContext, "runContext");
@@ -27,7 +26,7 @@ public final class Analyzer {
         ProblemCollector collector = runContext.getCollector();
 
         result.getProblems().forEach(parseProblem -> collector.report(
-                "parser",
+                Constant.PARSER_RULE_ID,
                 Severity.ERROR,
                 parseProblem.getMessage(),
                 sourceFile.getPath().toString(),
@@ -39,7 +38,9 @@ public final class Analyzer {
         return result.getResult().map(compilationUnit -> {
             AnalysisContext context = new AnalysisContext(sourceFile, compilationUnit);
             runContext.getRules().stream()
-                    .filter(Rule::isEnabled)
+                    .filter(rule -> runContext.getConfig().isRuleEnabled(
+                            ruleIds.getId(rule.getClass())
+                    ))
                     .forEach(rule -> rule.analyze(context, collector));
             return context;
         });
