@@ -1,5 +1,6 @@
 package com.kingmang.axl.core;
 
+import com.kingmang.axl.rule.BoolMethodNameRule;
 import com.kingmang.axl.rule.ClassLineRule;
 import com.kingmang.axl.rule.Rule;
 
@@ -8,7 +9,8 @@ import java.util.Objects;
 
 public final class RuleIdResolver {
     private static final Map<String, Class<? extends Rule>> RULES = Map.of(
-            Constant.CLASS_LINE_RULE_ID, ClassLineRule.class
+            Constant.CLASS_LINE_RULE_ID, ClassLineRule.class,
+            Constant.BOOLEAN_NAME_ID, BoolMethodNameRule.class
     );
 
     public String getId(Class<? extends Rule> ruleClass) {

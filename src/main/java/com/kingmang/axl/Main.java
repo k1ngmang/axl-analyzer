@@ -3,10 +3,10 @@ package com.kingmang.axl;
 import com.kingmang.axl.core.AnalysisRunContext;
 import com.kingmang.axl.core.Analyzer;
 import com.kingmang.axl.core.Config;
-import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Problem;
 import com.kingmang.axl.problem.Severity;
 import com.kingmang.axl.report.ConsoleReporter;
+import com.kingmang.axl.rule.BoolMethodNameRule;
 import com.kingmang.axl.rule.ClassLineRule;
 
 import java.io.IOException;
@@ -43,7 +43,10 @@ public class Main {
         ));
 
         AnalysisRunContext runContext = new AnalysisRunContext(
-                List.of(new ClassLineRule()),
+                List.of(
+                        new ClassLineRule(),
+                        new BoolMethodNameRule()
+                ),
                 config
         );
 
