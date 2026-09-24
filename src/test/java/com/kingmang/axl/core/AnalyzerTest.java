@@ -21,7 +21,7 @@ class AnalyzerTest {
     void runsEnabledRulesAndPreservesSourceLocation() throws IOException {
         Path source = temporaryDirectory.resolve("Large.java");
         Files.writeString(source, "class Large {\n\n\n}\n");
-        AnalysisRunContext runContext = new AnalysisRunContext(List.of(new ClassLineRule(1, 3)));
+        AnalysisRunContext runContext = new AnalysisRunContext(List.of(new ClassLineRule(1, 3, 4, 5)));
 
         new Analyzer(runContext).analyze(source);
 
@@ -36,13 +36,37 @@ class AnalyzerTest {
     void skipsDisabledRules() throws IOException {
         Path source = temporaryDirectory.resolve("Large.java");
         Files.writeString(source, "class Large {\n\n\n}\n");
-        ClassLineRule rule = new ClassLineRule(1, 3);
+        ClassLineRule rule = new ClassLineRule(1, 3, 4, 5);
         rule.setEnabled(false);
         AnalysisRunContext runContext = new AnalysisRunContext(List.of(rule));
 
         new Analyzer(runContext).analyze(source);
 
         assertTrue(runContext.getCollector().getProblems().isEmpty());
+    }
+
+    @Test
+    void reportsLongMethodsWithTheirNameAndRange() throws IOException {
+        Path source = temporaryDirectory.resolve("Example.java");
+        Files.writeString(source, """
+                class Example {
+                    void longMethod() {
+
+
+                    }
+                }
+                """);
+        AnalysisRunContext runContext = new AnalysisRunContext(
+                List.of(new ClassLineRule(100, 200, 1, 3))
+        );
+
+        new Analyzer(runContext).analyze(source);
+
+        var problems = runContext.getCollector().getProblems();
+        assertEquals(1, problems.size());
+        assertEquals(Severity.WARNING, problems.getFirst().getSeverity());
+        assertTrue(problems.getFirst().getMessage().startsWith("method longMethod "));
+        assertTrue(problems.getFirst().getRange().isPresent());
     }
 
     @Test
