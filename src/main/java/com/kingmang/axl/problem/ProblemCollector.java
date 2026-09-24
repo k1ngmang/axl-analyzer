@@ -1,7 +1,6 @@
 package com.kingmang.axl.problem;
 
 import com.github.javaparser.Range;
-import com.kingmang.axl.core.RuleIdResolver;
 import com.kingmang.axl.rule.Rule;
 
 import java.util.ArrayList;
@@ -12,15 +11,6 @@ import java.util.Optional;
 
 public final class ProblemCollector {
     private final List<Problem> problems = new ArrayList<>();
-    private final RuleIdResolver ruleIds;
-
-    public ProblemCollector() {
-        this(new RuleIdResolver());
-    }
-
-    public ProblemCollector(RuleIdResolver ruleIds) {
-        this.ruleIds = Objects.requireNonNull(ruleIds, "ruleIds");
-    }
 
     public void report(Problem problem) {
         problems.add(Objects.requireNonNull(problem, "problem"));
@@ -66,7 +56,7 @@ public final class ProblemCollector {
     ) {
         Objects.requireNonNull(rule, "rule");
         report(
-                ruleIds.getId(rule.getClass()),
+                rule.getId(),
                 severity,
                 message,
                 source,

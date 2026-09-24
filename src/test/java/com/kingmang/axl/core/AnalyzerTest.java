@@ -27,7 +27,7 @@ class AnalyzerTest {
         new Analyzer(runContext).analyze(source);
 
         var problem = runContext.getCollector().getProblems().getFirst();
-        assertEquals(Constant.CLASS_LINE_RULE_ID, problem.getRuleId());
+        assertEquals(Constant.CLASS_LINE_ID, problem.getRuleId());
         assertEquals(Severity.WARNING, problem.getSeverity());
         assertEquals(source.toAbsolutePath().normalize().toString(), problem.getFileName());
         assertTrue(problem.getRange().isPresent());
@@ -38,7 +38,7 @@ class AnalyzerTest {
         Path source = temporaryDirectory.resolve("Large.java");
         Files.writeString(source, "class Large {\n\n\n}\n");
         ClassLineRule rule = new ClassLineRule(1, 3, 4, 5);
-        Config config = new Config(Map.of(Constant.CLASS_LINE_RULE_ID, false));
+        Config config = new Config(Map.of(Constant.CLASS_LINE_ID, false));
         AnalysisRunContext runContext = new AnalysisRunContext(List.of(rule), config);
 
         new Analyzer(runContext).analyze(source);

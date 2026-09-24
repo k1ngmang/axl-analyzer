@@ -102,6 +102,11 @@ public final class ClassLineRule extends AstRule {
     }
 
     @Override
+    public String getId() {
+        return Constant.CLASS_LINE_ID;
+    }
+
+    @Override
     public String getDescription() {
         return "Reports classes, interfaces, and methods that exceed the configured line limits";
     }

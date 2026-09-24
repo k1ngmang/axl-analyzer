@@ -13,7 +13,6 @@ import java.util.Optional;
 public final class Analyzer {
 
     private final AnalysisRunContext runContext;
-    private final RuleIdResolver ruleIds = new RuleIdResolver();
 
     public Analyzer(AnalysisRunContext runContext) {
         this.runContext = Objects.requireNonNull(runContext, "runContext");
@@ -38,9 +37,7 @@ public final class Analyzer {
         return result.getResult().map(compilationUnit -> {
             AnalysisContext context = new AnalysisContext(sourceFile, compilationUnit);
             runContext.getRules().stream()
-                    .filter(rule -> runContext.getConfig().isRuleEnabled(
-                            ruleIds.getId(rule.getClass())
-                    ))
+                    .filter(rule -> runContext.getConfig().isRuleEnabled(rule.getId()))
                     .forEach(rule -> rule.analyze(context, collector));
             return context;
         });

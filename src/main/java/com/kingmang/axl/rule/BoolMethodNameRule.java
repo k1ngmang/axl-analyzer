@@ -25,13 +25,19 @@ public class BoolMethodNameRule extends AstRule{
             return;
 
         collector().report(
-                Constant.BOOLEAN_NAME_ID,
+                this,
                 Severity.INFO,
                 "The method " + fd.getNameAsString() + " does not begin with a question word.",
                 context.getSourceFile().getPath().toString(),
                 fd.getRange()
         );
     }
+
+    @Override
+    public String getId() {
+        return Constant.BOOLEAN_NAME_ID;
+    }
+
     @Override
     public String getDescription() {
         return "Reports boolean declarations that do not start with a question";
