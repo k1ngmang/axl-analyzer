@@ -1,6 +1,7 @@
 package com.kingmang.axl.core;
 
 import com.github.javaparser.JavaParser;
+import com.github.javaparser.ParserConfiguration;
 import com.kingmang.axl.problem.ProblemCollector;
 import com.kingmang.axl.rule.Rule;
 
@@ -18,7 +19,14 @@ public final class AnalysisRunContext {
     }
 
     public AnalysisRunContext(List<? extends Rule> rules, Config config) {
-        this(new JavaParser(), rules, new ProblemCollector(), config);
+        this(
+                new JavaParser(new ParserConfiguration().setLanguageLevel(
+                        ParserConfiguration.LanguageLevel.JAVA_25
+                )),
+                rules,
+                new ProblemCollector(),
+                config
+        );
     }
 
     public AnalysisRunContext(JavaParser parser, List<? extends Rule> rules, ProblemCollector collector) {

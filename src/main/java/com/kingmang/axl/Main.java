@@ -8,6 +8,7 @@ import com.kingmang.axl.problem.Severity;
 import com.kingmang.axl.report.ConsoleReporter;
 import com.kingmang.axl.rule.BoolMethodNameRule;
 import com.kingmang.axl.rule.ClassLineRule;
+import com.kingmang.axl.rule.CyclomaticComplexityRule;
 import com.kingmang.axl.rule.EmptyCatchRule;
 
 import java.io.IOException;
@@ -47,7 +48,8 @@ public class Main {
                 List.of(
                         new ClassLineRule(),
                         new BoolMethodNameRule(),
-                        new EmptyCatchRule()
+                        new EmptyCatchRule(),
+                        new CyclomaticComplexityRule()
                 ),
                 config
         );

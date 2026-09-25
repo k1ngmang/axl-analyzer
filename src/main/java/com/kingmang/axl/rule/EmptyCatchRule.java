@@ -22,12 +22,12 @@ public class EmptyCatchRule extends AstRule{
 
     @Override
     public String getId() {
-        return "";
+        return Constant.EMPTY_CATCH_ID;
     }
 
     @Override
     public String getDescription() {
-        return Constant.EMPTY_CATCH_ID;
+        return "Evaluates try blocks without catch";
     }
 
     @Override
