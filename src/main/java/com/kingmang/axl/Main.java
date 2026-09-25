@@ -8,6 +8,7 @@ import com.kingmang.axl.problem.Severity;
 import com.kingmang.axl.report.ConsoleReporter;
 import com.kingmang.axl.rule.BoolMethodNameRule;
 import com.kingmang.axl.rule.ClassLineRule;
+import com.kingmang.axl.rule.EmptyCatchRule;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -45,7 +46,8 @@ public class Main {
         AnalysisRunContext runContext = new AnalysisRunContext(
                 List.of(
                         new ClassLineRule(),
-                        new BoolMethodNameRule()
+                        new BoolMethodNameRule(),
+                        new EmptyCatchRule()
                 ),
                 config
         );

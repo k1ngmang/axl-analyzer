@@ -4,6 +4,7 @@ public final class Constant {
     // rule_id
     public static final String CLASS_LINE_ID = "class-lines";
     public static final String BOOLEAN_NAME_ID = "boolean-name";
+    public static final String EMPTY_CATCH_ID = "empty-catch-statement";
     public static final String PARSER_RULE_ID = "parser";
 
     // analyzer rules
