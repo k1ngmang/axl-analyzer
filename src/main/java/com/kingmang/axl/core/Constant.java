@@ -6,6 +6,8 @@ public final class Constant {
     public static final String BOOLEAN_NAME_ID = "boolean-name";
     public static final String EMPTY_CATCH_ID = "empty-catch-block";
     public static final String CYCLOMATIC_COMPLEX_ID = "cyclomatic-complexity";
+
+    public static final String CAMEL_CASE_ID = "naming-convention";
     public static final String PARSER_RULE_ID = "parser";
 
     // analyzer rules

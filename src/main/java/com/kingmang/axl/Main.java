@@ -6,10 +6,7 @@ import com.kingmang.axl.core.Config;
 import com.kingmang.axl.problem.Problem;
 import com.kingmang.axl.problem.Severity;
 import com.kingmang.axl.report.ConsoleReporter;
-import com.kingmang.axl.rule.BoolMethodNameRule;
-import com.kingmang.axl.rule.ClassLineRule;
-import com.kingmang.axl.rule.CyclomaticComplexityRule;
-import com.kingmang.axl.rule.EmptyCatchRule;
+import com.kingmang.axl.rule.*;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -49,6 +46,7 @@ public class Main {
                         new ClassLineRule(),
                         new BoolMethodNameRule(),
                         new EmptyCatchRule(),
+                        new CamelCaseRule(), // aka naming-convention
                         new CyclomaticComplexityRule()
                 ),
                 config
