@@ -99,6 +99,7 @@ public final class ClassLineRule extends AstRule {
                 context.getSourceFile().getPath().toString(),
                 declaration.getRange()
         );
+
     }
 
     @Override

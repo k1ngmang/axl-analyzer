@@ -31,6 +31,7 @@ public class BoolMethodNameRule extends AstRule{
                 context.getSourceFile().getPath().toString(),
                 fd.getRange()
         );
+        super.visit(fd, context);
     }
 
     @Override

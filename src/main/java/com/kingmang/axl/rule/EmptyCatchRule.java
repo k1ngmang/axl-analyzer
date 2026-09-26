@@ -18,6 +18,7 @@ public class EmptyCatchRule extends AstRule{
                     ts.getRange()
             );
         }
+        super.visit(ts, context);
     }
 
     @Override
