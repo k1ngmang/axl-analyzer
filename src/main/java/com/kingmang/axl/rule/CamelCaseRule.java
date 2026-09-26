@@ -30,7 +30,7 @@ public class CamelCaseRule extends AstRule{
 
     @Override
     public String getDescription() {
-        return "";
+        return "Checks for compliance with naming conventions";
     }
 
     @Override
