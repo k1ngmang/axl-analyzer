@@ -1,7 +1,7 @@
 package com.kingmang.axl.core;
 
 import com.kingmang.axl.problem.Severity;
-import com.kingmang.axl.rule.ClassLineRule;
+import com.kingmang.axl.rule.style.ClassLineRule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 

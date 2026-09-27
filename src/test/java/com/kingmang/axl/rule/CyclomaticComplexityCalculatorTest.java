@@ -2,6 +2,7 @@ package com.kingmang.axl.rule;
 
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.body.MethodDeclaration;
+import com.kingmang.axl.rule.mectrics.CyclomaticComplexityCalculator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

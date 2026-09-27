@@ -1,4 +1,4 @@
-package com.kingmang.axl.rule;
+package com.kingmang.axl.rule.mectrics;
 
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.AnnotationDeclaration;

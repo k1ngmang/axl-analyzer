@@ -5,6 +5,7 @@ import com.kingmang.axl.core.Analyzer;
 import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Problem;
 import com.kingmang.axl.problem.Severity;
+import com.kingmang.axl.rule.mectrics.CyclomaticComplexityRule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 

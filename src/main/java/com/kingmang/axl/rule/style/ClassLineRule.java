@@ -1,4 +1,4 @@
-package com.kingmang.axl.rule;
+package com.kingmang.axl.rule.style;
 
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
@@ -7,6 +7,7 @@ import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import com.kingmang.axl.core.AnalysisContext;
 import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Severity;
+import com.kingmang.axl.rule.AstRule;
 
 public final class ClassLineRule extends AstRule {
     private final int infoClassThreshold;

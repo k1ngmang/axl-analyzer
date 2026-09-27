@@ -1,4 +1,4 @@
-package com.kingmang.axl.rule;
+package com.kingmang.axl.rule.mectrics;
 
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.CompactConstructorDeclaration;
@@ -7,6 +7,7 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import com.kingmang.axl.core.AnalysisContext;
 import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Severity;
+import com.kingmang.axl.rule.AstRule;
 
 public final class CyclomaticComplexityRule extends AstRule {
     private final CyclomaticComplexityCalculator calculator = new CyclomaticComplexityCalculator();

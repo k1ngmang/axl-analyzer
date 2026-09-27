@@ -6,7 +6,11 @@ import com.kingmang.axl.core.Config;
 import com.kingmang.axl.problem.Problem;
 import com.kingmang.axl.problem.Severity;
 import com.kingmang.axl.report.ConsoleReporter;
-import com.kingmang.axl.rule.*;
+import com.kingmang.axl.rule.mectrics.CyclomaticComplexityRule;
+import com.kingmang.axl.rule.sema.EmptyCatchRule;
+import com.kingmang.axl.rule.style.BoolMethodNameRule;
+import com.kingmang.axl.rule.style.CamelCaseRule;
+import com.kingmang.axl.rule.style.ClassLineRule;
 
 import java.io.IOException;
 import java.io.PrintStream;

@@ -1,11 +1,12 @@
-package com.kingmang.axl.rule;
+package com.kingmang.axl.rule.sema;
 
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.kingmang.axl.core.AnalysisContext;
 import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Severity;
+import com.kingmang.axl.rule.AstRule;
 
-public class EmptyCatchRule extends AstRule{
+public class EmptyCatchRule extends AstRule {
 
     @Override
     public void visit(TryStmt ts, AnalysisContext context){

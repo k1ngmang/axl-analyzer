@@ -1,12 +1,13 @@
-package com.kingmang.axl.rule;
+package com.kingmang.axl.rule.style;
 
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.kingmang.axl.core.AnalysisContext;
 import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Severity;
+import com.kingmang.axl.rule.AstRule;
 
-public class CamelCaseRule extends AstRule{
+public class CamelCaseRule extends AstRule {
 
     @Override
     public void visit(ClassOrInterfaceDeclaration declaration, AnalysisContext context){

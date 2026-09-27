@@ -1,11 +1,12 @@
-package com.kingmang.axl.rule;
+package com.kingmang.axl.rule.style;
 
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.kingmang.axl.core.AnalysisContext;
 import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Severity;
+import com.kingmang.axl.rule.AstRule;
 
-public class BoolMethodNameRule extends AstRule{
+public class BoolMethodNameRule extends AstRule {
 
     @Override
     public void visit(MethodDeclaration fd, AnalysisContext context){

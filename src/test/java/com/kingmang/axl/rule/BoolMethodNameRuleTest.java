@@ -5,6 +5,7 @@ import com.kingmang.axl.core.Analyzer;
 import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Problem;
 import com.kingmang.axl.problem.Severity;
+import com.kingmang.axl.rule.style.BoolMethodNameRule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
