@@ -2,6 +2,7 @@ package com.kingmang.axl.core;
 
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.symbolsolver.javaparsermodel.JavaParserFacade;
+import com.kingmang.axl.cfg.CfgRepository;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -10,6 +11,7 @@ public final class AnalysisContext {
     private final SourceFile sourceFile;
     private final CompilationUnit compilationUnit;
     private final JavaParserFacade javaParserFacade;
+    private final CfgRepository cfgRepository;
 
     public AnalysisContext(SourceFile sourceFile, CompilationUnit compilationUnit) {
         this(sourceFile, compilationUnit, null);
@@ -23,6 +25,7 @@ public final class AnalysisContext {
         this.sourceFile = Objects.requireNonNull(sourceFile, "sourceFile");
         this.compilationUnit = Objects.requireNonNull(compilationUnit, "compilationUnit");
         this.javaParserFacade = javaParserFacade;
+        this.cfgRepository = new CfgRepository(compilationUnit);
     }
 
     public SourceFile getSourceFile() {
@@ -35,5 +38,9 @@ public final class AnalysisContext {
 
     public Optional<JavaParserFacade> getJavaParserFacade() {
         return Optional.ofNullable(javaParserFacade);
+    }
+
+    public CfgRepository getCfgRepository() {
+        return cfgRepository;
     }
 }

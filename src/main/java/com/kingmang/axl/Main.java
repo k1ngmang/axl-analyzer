@@ -8,6 +8,7 @@ import com.kingmang.axl.problem.Severity;
 import com.kingmang.axl.report.ConsoleReporter;
 import com.kingmang.axl.rule.mectrics.CyclomaticComplexityRule;
 import com.kingmang.axl.rule.sema.EmptyCatchRule;
+import com.kingmang.axl.rule.sema.UnreachableCodeRule;
 import com.kingmang.axl.rule.style.BoolMethodNameRule;
 import com.kingmang.axl.rule.style.CamelCaseRule;
 import com.kingmang.axl.rule.style.ClassLineRule;
@@ -51,7 +52,8 @@ public class Main {
                         new BoolMethodNameRule(),
                         new EmptyCatchRule(),
                         new CamelCaseRule(), // aka naming-convention
-                        new CyclomaticComplexityRule()
+                        new CyclomaticComplexityRule(),
+                        new UnreachableCodeRule()
                 ),
                 config
         );
