@@ -2,6 +2,8 @@ package com.kingmang.axl.core;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParserConfiguration;
+import com.kingmang.axl.config.Config;
+import com.kingmang.axl.config.ConfigException;
 import com.kingmang.axl.problem.ProblemCollector;
 import com.kingmang.axl.rule.Rule;
 
@@ -25,7 +27,7 @@ public final class AnalysisRunContext {
                 )),
                 rules,
                 new ProblemCollector(),
-                config
+                isConfNotNull(config)
         );
     }
 
@@ -55,6 +57,14 @@ public final class AnalysisRunContext {
 
     public ProblemCollector getCollector() {
         return collector;
+    }
+
+    private static Config isConfNotNull(Config config){
+        if(config != null)
+            return config;
+        else
+            //TODO: better output
+            throw new ConfigException("config missing");
     }
 
     public Config getConfig() {

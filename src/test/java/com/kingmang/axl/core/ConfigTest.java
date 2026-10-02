@@ -1,5 +1,6 @@
 package com.kingmang.axl.core;
 
+import com.kingmang.axl.config.Config;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;

@@ -1,8 +1,9 @@
 package com.kingmang.axl;
 
+import com.kingmang.axl.config.Config;
 import com.kingmang.axl.core.AnalysisRunContext;
 import com.kingmang.axl.core.Analyzer;
-import com.kingmang.axl.core.Config;
+import com.kingmang.axl.core.Constant;
 import com.kingmang.axl.problem.Problem;
 import com.kingmang.axl.problem.Severity;
 import com.kingmang.axl.report.ConsoleReporter;
@@ -12,6 +13,7 @@ import com.kingmang.axl.rule.sema.UnreachableCodeRule;
 import com.kingmang.axl.rule.style.BoolMethodNameRule;
 import com.kingmang.axl.rule.style.CamelCaseRule;
 import com.kingmang.axl.rule.style.ClassLineRule;
+import org.checkerframework.checker.units.qual.C;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -42,8 +44,8 @@ public class Main {
             return 0;
         }
 
+
         Config config = new Config(Map.of(
-                // Constant.CLASS_LINE_RULE_ID, false
         ));
 
         AnalysisRunContext runContext = new AnalysisRunContext(
@@ -55,7 +57,7 @@ public class Main {
                         new CyclomaticComplexityRule(),
                         new UnreachableCodeRule()
                 ),
-                config
+                null
         );
 
         Analyzer analyzer = new Analyzer(runContext);

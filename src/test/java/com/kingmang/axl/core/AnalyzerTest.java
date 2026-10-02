@@ -1,5 +1,6 @@
 package com.kingmang.axl.core;
 
+import com.kingmang.axl.config.Config;
 import com.kingmang.axl.problem.Severity;
 import com.kingmang.axl.rule.style.ClassLineRule;
 import org.junit.jupiter.api.Test;

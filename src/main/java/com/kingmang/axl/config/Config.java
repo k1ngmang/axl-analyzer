@@ -1,4 +1,4 @@
-package com.kingmang.axl.core;
+package com.kingmang.axl.config;
 
 import java.util.Map;
 import java.util.Objects;
