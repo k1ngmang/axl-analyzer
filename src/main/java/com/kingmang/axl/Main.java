@@ -57,7 +57,7 @@ public class Main {
                         new CyclomaticComplexityRule(),
                         new UnreachableCodeRule()
                 ),
-                null
+                config
         );
 
         Analyzer analyzer = new Analyzer(runContext);
